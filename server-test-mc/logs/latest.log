@@ -1,0 +1,67 @@
+[21:20:42] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[21:20:44] [ServerMain/INFO]: Loaded 1174 recipes
+[21:20:44] [ServerMain/INFO]: Loaded 1271 advancements
+[21:20:45] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[21:20:45] [Server thread/INFO]: Loading properties
+[21:20:45] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
+[21:20:45] [Server thread/INFO]: Using 4 threads for Netty based IO
+[21:20:45] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[21:20:46] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+    We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
+    For more information please visit: https://github.com/PaperMC/Paper/issues/8948
+[21:20:46] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 3 worker threads, and gen parallelism of 3 threads
+[21:20:46] [Server thread/INFO]: Default game type: SURVIVAL
+[21:20:46] [Server thread/INFO]: Generating keypair
+[21:20:46] [Server thread/INFO]: Starting Minecraft server on *:25565
+[21:20:46] [Server thread/INFO]: Using default channel type
+[21:20:46] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[21:20:46] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[21:20:46] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[21:20:46] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[21:20:46] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[21:20:46] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[21:20:46] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[21:20:46] [Server thread/INFO]: Preparing level "world"
+[21:20:46] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[21:20:47] [Server thread/INFO]: Time elapsed: 861 ms
+[21:20:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[21:20:47] [Server thread/INFO]: Time elapsed: 28 ms
+[21:20:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[21:20:47] [Server thread/INFO]: Time elapsed: 20 ms
+[21:20:47] [Server thread/INFO]: Running delayed init tasks
+[21:20:47] [Server thread/INFO]: Done (2.377s)! For help, type "help"
+[21:20:47] [Server thread/INFO]: Timings Reset
+[21:20:49] [User Authenticator #0/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:20:50] [Server thread/INFO]: MISBot joined the game
+[21:20:50] [Server thread/INFO]: MISBot[/127.0.0.1:62754] logged in with entity id 236 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:20:50] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[21:24:52] [Server thread/INFO]: MISBot lost connection: Disconnected
+[21:24:53] [Server thread/INFO]: MISBot left the game
+[21:24:54] [User Authenticator #1/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:24:54] [Server thread/INFO]: MISBot joined the game
+[21:24:54] [Server thread/INFO]: MISBot[/127.0.0.1:52708] logged in with entity id 302 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:24:54] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[21:26:49] [Server thread/INFO]: MISBot lost connection: Disconnected
+[21:26:49] [Server thread/INFO]: MISBot left the game
+[21:26:50] [User Authenticator #2/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:26:50] [Server thread/INFO]: MISBot joined the game
+[21:26:50] [Server thread/INFO]: MISBot[/127.0.0.1:50082] logged in with entity id 305 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:26:50] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[21:26:56] [Server thread/INFO]: MISBot lost connection: Disconnected
+[21:26:56] [Server thread/INFO]: MISBot left the game
+[21:26:57] [User Authenticator #2/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:26:57] [Server thread/INFO]: MISBot joined the game
+[21:26:57] [Server thread/INFO]: MISBot[/127.0.0.1:49697] logged in with entity id 306 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:26:57] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[21:27:00] [Server thread/INFO]: MISBot lost connection: Disconnected
+[21:27:00] [Server thread/INFO]: MISBot left the game
+[21:27:01] [User Authenticator #2/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:27:01] [Server thread/INFO]: MISBot joined the game
+[21:27:01] [Server thread/INFO]: MISBot[/127.0.0.1:55417] logged in with entity id 307 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:27:02] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[21:31:59] [Server thread/INFO]: MISBot lost connection: Disconnected
+[21:31:59] [Server thread/INFO]: MISBot left the game
+[21:32:00] [User Authenticator #3/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[21:32:00] [Server thread/INFO]: MISBot joined the game
+[21:32:00] [Server thread/INFO]: MISBot[/127.0.0.1:65525] logged in with entity id 313 at ([world]35.34735483815017, 66.0, -16.696427106615467)
+[21:32:00] [Server thread/INFO]: MISBot issued server command: /gamemode spectator

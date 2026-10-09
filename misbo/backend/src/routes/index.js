@@ -1,0 +1,22 @@
+import { Router } from 'express';
+
+import comprasRouter from './compras.routes.js';
+import usuarioRouter from './usuario.routes.js';
+import authRouter from './auth.routes.js';
+import productosRouter from './productos.routes.js';
+import adminRouter from './admin.routes.js';
+import mcIemsRouter from './mcItems.routes.js';
+
+import authMiddleware from '../middlewares/auth.middleware.js';
+import adminMiddleware from "../middlewares/admin.middleware.js";
+
+const router = Router();
+
+router.use('/compras', authMiddleware, comprasRouter);
+router.use('/usuario', authMiddleware, usuarioRouter);
+router.use('/auth', authRouter);
+router.use('/productos', productosRouter);
+router.use("/admin", authMiddleware, adminMiddleware, adminRouter);
+router.use('/mcItems',authMiddleware, adminMiddleware, mcIemsRouter)
+
+export default router;
