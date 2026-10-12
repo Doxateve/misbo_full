@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { useCarrito } from "../context/useCarrito";
 import { Button } from "@/components/ui/button";
+
+// Estilo de los links del menu: resalta el que coincide con la ruta actual
+const claseLink = ({ isActive }) =>
+  `text-sm transition-colors hover:text-purple-400 ${
+    isActive ? "text-purple-400" : "text-zinc-400"
+  }`;
 
 export default function Navbar() {
   const { usuario, cargando } = useAuth();
@@ -19,24 +25,22 @@ export default function Navbar() {
       </Link>
 
       <div className="flex items-center gap-6">
-        <Link
-          to="/"
-          className="text-sm text-zinc-400 hover:text-purple-400 transition-colors"
-        >
-          Tienda
-        </Link>
+        <NavLink to="/" end className={claseLink}>
+          Inicio
+        </NavLink>
 
-        <Link
-          to="/carrito"
-          className="relative text-sm text-zinc-400 hover:text-purple-400 transition-colors"
-        >
+        <NavLink to="/tienda" className={claseLink}>
+          Tienda
+        </NavLink>
+
+        <NavLink to="/carrito" className={(s) => `relative ${claseLink(s)}`}>
           Carrito
           {totalItems > 0 && (
             <span className="absolute -top-2 -right-3 bg-purple-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-[0_0_8px_rgba(168,85,247,0.6)]">
               {totalItems}
             </span>
           )}
-        </Link>
+        </NavLink>
 
         {cargando ? (
           <span className="text-sm text-zinc-500">...</span>
@@ -50,10 +54,10 @@ export default function Navbar() {
             </Link>
             {usuario?.rol === "admin" ? (
               <Link to="/admin">
-              <span className="text-sm text-zinc-300 hover:text-white">
-                Admin
-              </span>
-            </Link>
+                <span className="text-sm text-zinc-300 hover:text-white">
+                  Admin
+                </span>
+              </Link>
             ) : (
               <></>
             )}

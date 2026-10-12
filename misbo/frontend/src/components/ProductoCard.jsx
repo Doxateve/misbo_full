@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Info } from "lucide-react";
+import { Info, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -12,19 +11,28 @@ const badgeColores = {
 };
 
 export default function ProductoCard({ producto, onAgregar }) {
-  const { items } = useCarrito();
-
-  const [agregado, setAgregado] = useState(false);
+  const { items, actualizarCantidad, quitarItem } = useCarrito();
 
   const enCarrito =
     items.find((item) => item.id === producto.id)?.cantidad ?? 0;
+  // "Añadido" depende de lo que hay en el carrito
+  const agregado = enCarrito > 0;
   const sinStock = producto.tipo !== "ROL" && producto.stock === 0;
   const alcanzoLimite = producto.tipo !== "ROL" && enCarrito >= producto.stock;
 
-  async function agregarItem() {
+  function agregarItem() {
     onAgregar(producto);
-    setAgregado(true);
   }
+
+  // Lo contrario de agregarItem: resta 1, y si solo queda 1 lo quita del carrito
+  function quitarUnItem() {
+    if (enCarrito > 1) {
+      actualizarCantidad(producto.id, enCarrito - 1);
+    } else {
+      quitarItem(producto.id);
+    }
+  }
+
   return (
     <div
       className={`bg-zinc-900 border border-purple-500/15 rounded-xl p-4 flex flex-col gap-2.5 ${sinStock ? "opacity-50" : ""}`}
@@ -65,32 +73,65 @@ export default function ProductoCard({ producto, onAgregar }) {
         </span>
       </div>
 
-      <div className="flex gap-2">
-        <Button
-          asChild
-          variant="outline"
-          size="icon"
-          className="border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-white shrink-0"
-        >
-          <Link to={`/productos/${producto.id}`}>
-            <Info className="w-4 h-4" />
-          </Link>
-        </Button>
+      {agregado ? (
+        // Con producto en el carrito: [−] [n] [+]  Añadido
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={quitarUnItem}
+              className="rounded-full border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-white"
+            >
+              <Minus className="w-4 h-4" />
+            </Button>
 
-        <Button
-          onClick={() => agregarItem()}
-          disabled={sinStock || alcanzoLimite}
-          className={`${!agregado ? " bg-purple-600 hover:bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.35)]" : "bg-purple-900 hover:bg-purple-900 shadow-[0_0_10px_rgba(100,51,148,0.35)]"} flex-1 text-white disabled:bg-zinc-800 disabled:text-zinc-500 disabled:shadow-none`}
-        >
-          {sinStock
-            ? "Sin stock"
-            : alcanzoLimite
-              ? "Stock alcanzado"
-              : agregado
-                ? "Agregado!"
+            <span className="min-w-4 text-center text-xs font-bold text-white">
+              {enCarrito}
+            </span>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={agregarItem}
+              disabled={sinStock || alcanzoLimite}
+              className="rounded-full border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-white disabled:opacity-40"
+            >
+              <Plus className="w-4 h-4" />
+            </Button>
+          </div>
+
+          <span className="flex-1 text-center text-sm font-semibold text-purple-400">
+            Añadido
+          </span>
+        </div>
+      ) : (
+        // Sin producto en el carrito: [info]  Agregar
+        <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="outline"
+            size="icon"
+            className="rounded-full border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-white shrink-0"
+          >
+            <Link to={`/productos/${producto.id}`}>
+              <Info className="w-4 h-4" />
+            </Link>
+          </Button>
+
+          <Button
+            onClick={agregarItem}
+            disabled={sinStock || alcanzoLimite}
+            className="flex-1 bg-purple-600 text-white shadow-[0_0_10px_rgba(168,85,247,0.35)] hover:bg-purple-500 disabled:bg-zinc-800 disabled:text-zinc-500 disabled:shadow-none"
+          >
+            {sinStock
+              ? "Sin stock"
+              : alcanzoLimite
+                ? "Stock alcanzado"
                 : "Agregar"}
-        </Button>
-      </div>
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
