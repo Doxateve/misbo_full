@@ -101,9 +101,13 @@ export default function ProductoCard({ producto, onAgregar }) {
             </Button>
           </div>
 
-          <span className="flex-1 text-center text-sm font-semibold text-purple-400">
+          <Button
+            onClick={() => agregarItem()}
+            disabled="True"
+            className=" bg-purple-900 hover:bg-purple-900 shadow-[0_0_10px_rgba(100,51,148,0.35)] flex-1 text-white disabled:bg-zinc-800 disabled:text-zinc-500 disabled:shadow-none"
+          >
             Añadido
-          </span>
+          </Button>
         </div>
       ) : (
         // Sin producto en el carrito: [info]  Agregar

@@ -7,7 +7,7 @@ const register = async (req, res) => {
     const contraseña = req.body.contraseña;
 
     // Si la request no contiene alguno de los campos, entonces:
-    if(!nombre || !username || !email || !contraseña) {
+    if (!nombre || !username || !email || !contraseña) {
         // 400 bad request
         return res.status(400).json({ message: "Request invalida (Faltan campos)." });
     };
@@ -16,7 +16,7 @@ const register = async (req, res) => {
         await authServices.registerService(nombre, username, email, contraseña);
         // 200 OK
         return res.status(200).json({ message: `Usuario "${nombre}" registrado satisfactoriamente.` })
-    } catch(error) {
+    } catch (error) {
         return res.status(400).json({ message: error.message });
     };
 };
@@ -24,21 +24,21 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const email = req.body.email;
     const contraseña = req.body.contraseña;
-    const recordarme = req.body.recordarme; 
+    const recordarme = req.body.recordarme;
 
     // Si la request no contiene alguno de los campos, entonces:
-    if(!email || !contraseña) {
+    if (!email || !contraseña) {
         // 400 bad request
         return res.status(400).json({ message: "Request invalida (Faltan campos)." });
     };
 
-    if(req.cookies.token){
+    if (req.cookies.token) {
         // 200 OK
         return res.status(200).json({ message: "Usuario en sesion." });
     }
 
     try {
-        const { usuario, token } = await authServices.loginService({email, contraseña}, res);
+        const { usuario, token } = await authServices.loginService({ email, contraseña }, res);
 
         const unDia = 24 * 60 * 60 * 1000;
         const treintaDias = 30 * 24 * 60 * 60 * 1000;
@@ -52,9 +52,23 @@ const login = async (req, res) => {
 
         // 200 OK
         return res.status(200).json({ message: `Sesion iniciada como: "${usuario.username}"`, usuario });
-    } catch(error) {
+    } catch (error) {
         return res.status(400).json({ message: error.message });
     }
 }
 
-export default { register, login };
+const logout = async (req, res) => {
+    try {
+        if (!req.cookies.token) {
+            return res.status(401).json({ message: 'El usuario no está en sesión.' })
+        }
+
+        res.clearCookie('token');
+
+        return res.status(200).json({ message: "Sesión cerrada." })
+    } catch (error) {
+        return res.status(400).json({ message: error })
+    }
+}
+
+export default { register, login, logout };

@@ -45,6 +45,23 @@ export async function login(email, contraseña, recordarme) {
     return data.usuario
 };
 
+export async function logout() {
+    const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include'
+    })
+
+    // Convierte la response en json
+    const data = await res.json()
+
+    // Si no devuelve 200 OK
+    if (!res.ok) {
+        throw new Error(data.message)
+    }
+
+    return data.message
+};
+
 export async function usuarioActual() {
     const res = await fetch('/api/usuario/yo', { credentials: 'include' });
 
@@ -57,4 +74,4 @@ export async function usuarioActual() {
     }
 
     return data.usuario
-}
+};

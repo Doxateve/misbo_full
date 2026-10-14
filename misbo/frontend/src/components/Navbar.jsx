@@ -1,19 +1,36 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { useCarrito } from "../context/useCarrito";
 import { Button } from "@/components/ui/button";
 
+import { LogOut } from 'lucide-react';
+
+import { logout } from "@/services/auth.services";
+
 // Estilo de los links del menu: resalta el que coincide con la ruta actual
 const claseLink = ({ isActive }) =>
-  `text-sm transition-colors hover:text-purple-400 ${
-    isActive ? "text-purple-400" : "text-zinc-400"
+  `text-sm transition-colors hover:text-purple-400 ${isActive ? "text-purple-400" : "text-zinc-400"
   }`;
 
 export default function Navbar() {
-  const { usuario, cargando } = useAuth();
+  const { setUsuario, usuario, cargando } = useAuth();
   const { items } = useCarrito();
 
   const totalItems = items.reduce((acc, item) => acc + item.cantidad, 0);
+
+  const navigate = useNavigate();
+
+
+  async function cerrarSesion() {
+    try {
+      await logout()
+    } catch(error) {
+      console.error(e.message);
+    } finally {
+      setUsuario(null);
+      navigate("/")
+    }
+  }
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-6 h-20 bg-zinc-950 border-b border-purple-500/20">
@@ -61,6 +78,10 @@ export default function Navbar() {
             ) : (
               <></>
             )}
+
+            <NavLink className="text-sm text-white" onClick={cerrarSesion}>
+              <LogOut className="size-5" />
+            </NavLink>
           </>
         ) : (
           <Button
