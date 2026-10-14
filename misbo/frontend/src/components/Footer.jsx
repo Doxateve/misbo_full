@@ -2,14 +2,9 @@ import { Link } from "react-router-dom";
 
 import { useAuth } from "@/context/useAuth";
 
-// Pagina de Instagram de ejemplo. Cuando tengas la real, ponla en misbo/frontend/.env:
-// VITE_INSTAGRAM_URL=https://instagram.com/tu_usuario
-// VITE_INSTAGRAM_HANDLE=@tu_usuario
-const INSTAGRAM_URL = import.meta.env.VITE_INSTAGRAM_URL || "#";
-const INSTAGRAM_HANDLE = import.meta.env.VITE_INSTAGRAM_HANDLE || "@misbo.oficial";
+const INSTAGRAM_HANDLE = "@misbo.oficial";
 
-// Misma IP que usa la pagina de inicio
-const IP_SERVIDOR = import.meta.env.VITE_SERVER_IP || "127.0.0.1:25565";
+const IP_SERVIDOR = "misbo.holy.gg";
 
 // lucide-react ya no incluye iconos de marcas, asi que el logo va como SVG propio
 function InstagramIcon({ className }) {

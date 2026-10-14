@@ -79,7 +79,7 @@ export default function CarritoDialog({
         const respuesta = await comprarItems(username, itemsParaBackend);
         setResponse(respuesta);
         setEsError(false);
-        setTimeout(() => vaciarCarrito(), 30000);
+        setTimeout(() => vaciarCarrito(), 15000);
       } catch (err) {
         setResponse(err.message);
         setEsError(true);

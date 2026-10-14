@@ -5,9 +5,6 @@ import prisma from "../config/database.js";
 import mineflayer from "mineflayer";
 import mineflayerPathfinder from "mineflayer-pathfinder";
 
-import nbt from "prismarine-nbt";
-import { error } from "node:console";
-
 import mciconsServices from "./mcItems.services.js";
 
 const {

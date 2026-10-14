@@ -1,6 +1,6 @@
-[09:21:45] [ServerMain/WARN]: [oshi.driver.windows.perfmon.PerfmonDisabled] Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
-[09:22:01] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[09:22:03] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key
+[11:12:08] [ServerMain/WARN]: [oshi.driver.windows.perfmon.PerfmonDisabled] Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[11:12:23] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[11:12:25] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key
 com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://api.minecraftservices.com/publickeys due to PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:108) ~[authlib-6.0.52.jar:?]
 	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:57) ~[authlib-6.0.52.jar:?]
@@ -92,79 +92,159 @@ Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to
 	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?]
 	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.52.jar:?]
 	... 9 more
-[09:22:28] [ServerMain/INFO]: Loaded 1174 recipes
-[09:22:28] [ServerMain/INFO]: Loaded 1271 advancements
-[09:22:30] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[09:22:30] [Server thread/INFO]: Loading properties
-[09:22:30] [AWT-EventQueue-0/WARN]: Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "org.bukkit.Server.getTPS()" because "org.bukkit.Bukkit.server" is null
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at org.bukkit.Bukkit.getTPS(Bukkit.java:2357)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at com.destroystokyo.paper.gui.RAMDetails.update(RAMDetails.java:62)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at com.destroystokyo.paper.gui.GuiStatsComponent.lambda$new$0(GuiStatsComponent.java:27)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/javax.swing.Timer.fireActionPerformed(Timer.java:311)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/javax.swing.Timer$DoPostEvent.run(Timer.java:243)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-[09:22:30] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
-[09:22:30] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
-[09:22:32] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[09:22:32] [Server thread/INFO]: Using 4 threads for Netty based IO
-[09:22:32] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
+[11:12:29] [ServerMain/INFO]: Loaded 1174 recipes
+[11:12:30] [ServerMain/INFO]: Loaded 1271 advancements
+[11:12:32] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[11:12:32] [Server thread/INFO]: Loading properties
+[11:12:32] [Server thread/INFO]: This server is running Paper version git-Paper-499 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 9de3f75 on ver/1.20.4)
+[11:12:35] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[11:12:35] [Server thread/INFO]: Using 4 threads for Netty based IO
+[11:12:35] [Server thread/WARN]: [!] The timings profiler has been enabled but has been scheduled for removal from Paper in the future.
     We recommend installing the spark profiler as a replacement: https://spark.lucko.me/
     For more information please visit: https://github.com/PaperMC/Paper/issues/8948
-[09:22:32] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
-[09:22:33] [Server thread/INFO]: Default game type: SURVIVAL
-[09:22:33] [Server thread/INFO]: Generating keypair
-[09:22:34] [Server thread/INFO]: Starting Minecraft server on *:25565
-[09:22:34] [Server thread/INFO]: Using default channel type
-[09:22:34] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[09:22:34] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[09:22:34] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[09:22:34] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[09:22:34] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[09:22:34] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[09:22:34] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[09:22:34] [Server thread/INFO]: Preparing level "world"
-[09:22:35] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[09:22:35] [Server thread/INFO]: Time elapsed: 328 ms
-[09:22:35] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[09:22:36] [Server thread/INFO]: Time elapsed: 166 ms
-[09:22:36] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[09:22:36] [Server thread/INFO]: Time elapsed: 74 ms
-[09:22:36] [Server thread/INFO]: Running delayed init tasks
-[09:22:36] [Server thread/INFO]: Done (6.275s)! For help, type "help"
-[09:22:36] [Server thread/INFO]: Timings Reset
-[09:22:47] [Server thread/INFO]: Stopping server
-[09:22:47] [Server thread/INFO]: Saving players
-[09:22:47] [Server thread/INFO]: Saving worlds
-[09:22:47] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[09:22:47] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[09:22:47] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[09:22:47] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[09:22:49] [Server thread/INFO]: [ChunkHolderManager] Saved 144 block chunks, 144 entity chunks, 0 poi chunks in world 'world' in 1.94s
-[09:22:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[09:22:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[09:22:49] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[09:22:49] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[09:22:49] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[09:22:50] [Server thread/INFO]: [ChunkHolderManager] Saved 188 block chunks, 188 entity chunks, 0 poi chunks in world 'world_nether' in 0.75s
-[09:22:50] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[09:22:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[09:22:50] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[09:22:50] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[09:22:50] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[09:22:51] [Server thread/INFO]: [ChunkHolderManager] Saved 500 block chunks, 500 entity chunks, 0 poi chunks in world 'world_the_end' in 0.44s
-[09:22:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[09:22:51] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[09:22:51] [Server thread/INFO]: Flushing Chunk IO
-[09:22:51] [Server thread/INFO]: Closing Thread Pool
-[09:22:52] [Server thread/INFO]: Closing Server
+[11:12:35] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 1 worker threads, and gen parallelism of 1 threads
+[11:12:37] [Server thread/INFO]: Default game type: SURVIVAL
+[11:12:37] [Server thread/INFO]: Generating keypair
+[11:12:37] [Server thread/INFO]: Starting Minecraft server on *:25565
+[11:12:37] [Server thread/INFO]: Using default channel type
+[11:12:37] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[11:12:37] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[11:12:37] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[11:12:37] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[11:12:37] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[11:12:37] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[11:12:37] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[11:12:37] [Server thread/INFO]: Preparing level "world"
+[11:12:38] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[11:12:38] [Server thread/INFO]: Time elapsed: 441 ms
+[11:12:38] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[11:12:38] [Server thread/INFO]: Time elapsed: 61 ms
+[11:12:38] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[11:12:38] [Server thread/INFO]: Time elapsed: 48 ms
+[11:12:38] [Server thread/INFO]: Running delayed init tasks
+[11:12:38] [Server thread/INFO]: Done (6.545s)! For help, type "help"
+[11:12:38] [Server thread/INFO]: Timings Reset
+[11:12:55] [User Authenticator #0/INFO]: UUID of player MISBot is 72fde900-cca7-3a5d-970a-2720aa3084bb
+[11:12:56] [Server thread/INFO]: MISBot joined the game
+[11:12:56] [Server thread/INFO]: MISBot[/127.0.0.1:12283] logged in with entity id 116 at ([world]32.30957986112945, 67.0, -14.53397416887146)
+[11:12:57] [Server thread/INFO]: MISBot issued server command: /gamemode spectator
+[11:12:57] [Server thread/INFO]: [MISBot: Set own game mode to Spectator Mode]
+[11:17:25] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://api.minecraftservices.com/publickeys due to PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:108) ~[authlib-6.0.52.jar:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:57) ~[authlib-6.0.52.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:114) ~[authlib-6.0.52.jar:?]
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo$1.run(YggdrasilServicesKeyInfo.java:89) ~[authlib-6.0.52.jar:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alert.createSSLException(Alert.java:130) ~[?:?]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:383) ~[?:?]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:326) ~[?:?]
+	at sun.security.ssl.TransportContext.fatal(TransportContext.java:321) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1318) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1195) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1138) ~[?:?]
+	at sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:393) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:476) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:447) ~[?:?]
+	at sun.security.ssl.TransportContext.dispatch(TransportContext.java:206) ~[?:?]
+	at sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[?:?]
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:586) ~[?:?]
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:187) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1690) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1614) ~[?:?]
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?]
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.52.jar:?]
+	... 9 more
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:388) ~[?:?]
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:271) ~[?:?]
+	at sun.security.validator.Validator.validate(Validator.java:256) ~[?:?]
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:230) ~[?:?]
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1302) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1195) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1138) ~[?:?]
+	at sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:393) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:476) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:447) ~[?:?]
+	at sun.security.ssl.TransportContext.dispatch(TransportContext.java:206) ~[?:?]
+	at sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[?:?]
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:586) ~[?:?]
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:187) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1690) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1614) ~[?:?]
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?]
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.52.jar:?]
+	... 9 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:148) ~[?:?]
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:129) ~[?:?]
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:297) ~[?:?]
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:383) ~[?:?]
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:271) ~[?:?]
+	at sun.security.validator.Validator.validate(Validator.java:256) ~[?:?]
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:230) ~[?:?]
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1302) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1195) ~[?:?]
+	at sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1138) ~[?:?]
+	at sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:393) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:476) ~[?:?]
+	at sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:447) ~[?:?]
+	at sun.security.ssl.TransportContext.dispatch(TransportContext.java:206) ~[?:?]
+	at sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[?:?]
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[?:?]
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:586) ~[?:?]
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:187) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1690) ~[?:?]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1614) ~[?:?]
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?]
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?]
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.52.jar:?]
+	... 9 more
+[11:20:43] [Server thread/INFO]: Stopping server
+[11:20:43] [Server thread/INFO]: Saving players
+[11:20:43] [Server thread/INFO]: MISBot lost connection: Server closed
+[11:20:43] [Server thread/INFO]: MISBot left the game
+[11:20:44] [Server thread/INFO]: Saving worlds
+[11:20:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saved 1 block chunks, 193 entity chunks, 0 poi chunks in world 'world' in 0.08s
+[11:20:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[11:20:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 9 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
+[11:20:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:20:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[11:20:44] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 10 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
+[11:20:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:20:44] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[11:20:44] [Server thread/INFO]: Flushing Chunk IO
+[11:20:44] [Server thread/INFO]: Closing Thread Pool
+[11:20:44] [Server thread/INFO]: Closing Server

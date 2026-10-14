@@ -1,7 +1,12 @@
 import prisma from '../config/database.js';
 
 const listarService = async () => {
-    return await prisma.producto.findMany();
+    return await prisma.producto.findMany({
+        orderBy: [
+            { stock: 'desc' },
+            { id: 'desc' },
+        ]
+    });
 }
 
 const buscarService = async (productId) => {
