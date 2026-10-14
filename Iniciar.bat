@@ -1,8 +1,8 @@
 @echo off
 
-set SERVERPATH=C:\Users\Samuel\Desktop\misbo_full\server-test-mc
-set BACKENDPATH=C:\Users\Samuel\Desktop\misbo_full\misbo\backend
-set FRONTENDPATH=C:\Users\Samuel\Desktop\misbo_full\misbo\frontend
+set "SERVERPATH=%CD%\server-test-mc"
+set "BACKENDPATH=%CD%\misbo\backend"
+set "FRONTENDPATH=%CD%\misbo\frontend"
 wt.exe -w 0 new-tab --title "MC Server" cmd /k "cd /d %SERVERPATH% && java -Xmx4G -Xms1G -jar server.jar"
 
 timeout /t 10 >Nul
