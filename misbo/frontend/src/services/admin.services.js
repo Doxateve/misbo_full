@@ -24,3 +24,15 @@ export async function obtenerDashboard() {
 
   return data.dashboard;
 }
+
+export async function obtenerInventarioBot() {
+  const res = await fetch("/api/admin/inventario-bot", { credentials: "include" });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data.inventario;
+}

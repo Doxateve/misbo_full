@@ -4,23 +4,25 @@ import { Cog } from "lucide-react";
 
 import AgregarItem from "@/components/admin/AgregarItem.jsx";
 import Dashboard from "@/components/admin/Dashboard.jsx";
+import InventarioBot from "@/components/admin/InventarioBot.jsx";
+
+import { useAuth } from "@/context/useAuth";
 
 const tabs = [
   { label: "Dashboard", valor: "dashboard", Componente: Dashboard },
   { label: "Agregar Item", valor: "agregar", Componente: AgregarItem },
+  { label: "Inventario Bot", valor: "inventario", Componente: InventarioBot },
 ];
-
-import { useAuth } from "@/context/useAuth";
 
 export default function Admin() {
   const { usuario } = useAuth();
-
   const [tabActivo, setTabActivo] = useState("dashboard");
 
   const tabSeleccionado = tabs.find((tab) => tab.valor === tabActivo);
   const ComponenteActivo = tabSeleccionado.Componente;
 
   if (!usuario) return <Navigate to="/login" replace />;
+
   if (usuario.rol !== "admin") return <Navigate to="/" replace />;
 
   return (

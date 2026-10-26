@@ -1,5 +1,7 @@
 import prisma from "../config/database.js";
 
+import botServices from "./bot.services.js";
+
 const dashboardService = async () => {
   const [compras, totalProductos] = await Promise.all([
     prisma.compra.findMany({
@@ -64,4 +66,9 @@ const dashboardService = async () => {
   };
 };
 
-export default { dashboardService };
+// Inventario actual del bot de Minecraft
+const inventarioBotService = () => {
+  return botServices.obtenerInventario();
+};
+
+export default { dashboardService, inventarioBotService };

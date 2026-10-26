@@ -5,6 +5,9 @@ import prisma from "../config/database.js";
 import mineflayer from "mineflayer";
 import mineflayerPathfinder from "mineflayer-pathfinder";
 
+import nbt from "prismarine-nbt";
+import { error } from "node:console";
+
 import mciconsServices from "./mcItems.services.js";
 
 const {
@@ -397,4 +400,42 @@ const añadirObjeto = ({ nombre, mcItem, stock }) => {
   }
 };
 
-export default { bot, entregarObjeto, añadirObjeto };
+// Devuelve el inventario completo del bot, slot por slot (lo usa el panel de admin)
+// bot.inventory.slots es un array de 46 posiciones; cada una es un item o null (vacío):
+//   0 = resultado de crafteo, 1-4 = cuadrícula de crafteo, 5-8 = armadura (casco, pechera, pantalones, botas),
+//   9-35 = inventario principal, 36-44 = hotbar, 45 = mano secundaria
+const obtenerInventario = () => {
+  // bot.entity solo existe cuando el bot ya spawneó en el servidor
+  if (!bot.entity) return { conectado: false, items: [] };
+
+  const items = bot.inventory.slots
+    // Convierte cada slot en un objeto simple (o null si está vacío)
+    .map((item, slot) => {
+      if (!item) return null;
+
+      // Saca el custom name o asignado por un Yunque (misma lógica que sincronizarStock)
+      let nombrePersonalizado = null;
+      try {
+        const nameRaw = item.nbt?.value?.display?.value?.Name?.value;
+        nombrePersonalizado = nameRaw ? JSON.parse(nameRaw).text : null;
+      } catch {
+        nombrePersonalizado = null;
+      }
+
+      return {
+        slot,
+        mcItem: item.name,
+        nombre: nombrePersonalizado ?? item.displayName,
+        nombrePersonalizado,
+        cantidad: item.count,
+        esShulker: item.name.includes("shulker_box"),
+        imagenUrl: mciconsServices.obtenerIconoPorMcItem(item.name),
+      };
+    })
+    // Quita los slots vacíos
+    .filter(Boolean);
+
+  return { conectado: true, items };
+};
+
+export default { bot, entregarObjeto, añadirObjeto, obtenerInventario };
