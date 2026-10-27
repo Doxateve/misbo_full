@@ -6,7 +6,6 @@ import LoadingPage from "./pages/LoadingPage";
 
 import Home from './pages/Home'
 import Tienda from './pages/Tienda'
-import Producto from './pages/Producto'
 import Carrito from './pages/Carrito'
 import Register from './pages/Register'
 import Login from './pages/Login'
@@ -29,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
-          <Route path="/productos/:productoId" element={<Producto />} />
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

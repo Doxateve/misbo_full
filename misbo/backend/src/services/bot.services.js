@@ -5,9 +5,6 @@ import prisma from "../config/database.js";
 import mineflayer from "mineflayer";
 import mineflayerPathfinder from "mineflayer-pathfinder";
 
-import nbt from "prismarine-nbt";
-import { error } from "node:console";
-
 import mciconsServices from "./mcItems.services.js";
 
 const {
@@ -391,7 +388,7 @@ const añadirObjeto = ({ nombre, mcItem, stock }) => {
     if (!mcItem || !stock) throw new Error("Faltan datos");
 
     bot.chat(
-      `/give ${botUsername} minecraft:${mcItem}${nombre ? `{display:{Name:'{"text":"${nombre}"}'}}` : ""} ${stock}`,
+      `/give ${botUsername} minecraft:${mcItem}{display:{Name:'{"text":"${nombre}"}'}} ${stock}`,
     );
 
     return "Item entregado."

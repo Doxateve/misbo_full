@@ -32,12 +32,29 @@ import {
   ItemTitle,
 } from "@/components/ui/item";
 
-import { Ellipsis, Minus, Plus } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
+import { Button } from "@/components/ui/button";
+
+import {
+  Ellipsis,
+  Minus,
+  Plus,
+  AlertCircleIcon,
+  CheckCircle2Icon,
+  X
+} from "lucide-react";
 
 import { obtenerItems } from "@/services/admin.services.js";
 import LoadingPage from "@/pages/LoadingPage";
 
+import { agregarItem } from "@/services/admin.services.js";
+
 function AgregarItem() {
+  const [response, setResponse] = useState(null);
+  // Arranca con que el mensaje no es error
+  const [esError, setEsError] = useState(false);
+
   const [cargando, setCargando] = useState(true);
   const [items, setItems] = useState([]);
   const [error, setError] = useState("");
@@ -46,7 +63,7 @@ function AgregarItem() {
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [stock, setStock] = useState(0);
-  const [precio, setPrecio] = useState(0)
+  const [precio, setPrecio] = useState(0);
 
   const [busqueda, setBusqueda] = useState("");
 
@@ -58,6 +75,42 @@ function AgregarItem() {
       .catch((err) => setError(err))
       .finally(() => setCargando(false));
   }, []);
+
+  async function handleSubmit(e) {
+    // Para evitar envios erroneos del form
+    e.preventDefault();
+    // Hace que no haya ninguna response al comenzar el envio del form
+    setResponse(null);
+
+    try {
+      const mcItem = itemSeleccionado?.mcItem;
+      const nombreItem = nombre !== "" ? nombre : itemSeleccionado?.nombre;
+      const imagenUrl = itemSeleccionado?.imgSrc;
+
+      const message = await agregarItem(
+        imagenUrl,
+        mcItem,
+        nombreItem,
+        descripcion,
+        precio,
+        stock,
+      );
+      // Limpia los datos
+      setItemSeleccionado(null);
+      setNombre("")
+      setDescripcion("");
+      setPrecio(0)
+      setStock(0)
+      // Envia la respuesta
+      setResponse(message);
+      setEsError(false);
+    } catch (error) {
+      // Si hay error, hace que el mensaje sea error
+      setEsError(true);
+      // Setea en la response el mensaje de error
+      setResponse(error.message);
+    }
+  }
 
   const itemsFiltrados = useMemo(() => {
     if (!busqueda) return items;
@@ -83,8 +136,32 @@ function AgregarItem() {
 
   return (
     <div className="p-2">
-      <form action="">
+      <form autoComplete="off" onSubmit={handleSubmit}>
         <FieldGroup className="space-y-4">
+          {response && (
+            <Alert
+              className="animate-in fade-in duration-200"
+              variant={esError ? "destructive" : "default"}
+            >
+              {esError ? (
+                <AlertCircleIcon className="w-6! h-6!" />
+              ) : (
+                <CheckCircle2Icon className="w-6! h-6!" />
+              )}
+              <AlertTitle className="text-lg font-extrabold">
+                {esError ? "Error" : "Mensaje"}
+              </AlertTitle>
+              <AlertDescription className="text-base font-semibold">
+                {response}
+              </AlertDescription>
+              <button
+                onClick={() => setResponse("")}
+                className="absolute top-3 right-3 text-zinc-500 hover:text-white"
+              >
+                <X className="w-6! h-6!" />
+              </button>
+            </Alert>
+          )}
           <FieldGroup className="grid grid-cols-[1fr_2.894fr]">
             <Field>
               <div className="w-[234.75px] h-[234.75px] bg-[#151517] rounded-lg flex items-center justify-center">
@@ -256,11 +333,8 @@ function AgregarItem() {
                   onChange={(e) => setPrecio(e.target.value)}
                   className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   autoComplete="off"
-                  placeholder="0.000"
+                  placeholder="0"
                 />
-                <InputGroupAddon align="inline-end">
-                  <InputGroupText>COP</InputGroupText>
-                </InputGroupAddon>
               </InputGroup>
             </Field>
           </FieldGroup>
@@ -279,6 +353,14 @@ function AgregarItem() {
               />
             </InputGroup>
           </FieldGroup>
+          <Field>
+            <Button
+              type="submit"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white shadow-[0_0_14px_rgba(168,85,247,0.4)] mt-4 p-7 text-lg font-black"
+            >
+              Agregar
+            </Button>
+          </Field>
         </FieldGroup>
       </form>
     </div>

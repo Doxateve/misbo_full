@@ -1,6 +1,5 @@
-import { Info, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 import { useCarrito } from "@/context/useCarrito";
 
@@ -56,7 +55,7 @@ export default function ProductoCard({ producto, onAgregar }) {
       </span>
 
       <p className="text-white text-[15px] font-medium">{producto.nombre}</p>
-      <p className="text-zinc-500 text-sm">{producto.descripcion}</p>
+      <p className={`text-zinc-500 text-sm ${producto.descripcion === "" && "italic"}`}>{producto.descripcion === "" ? "No hay descripcion." : producto.descripcion}</p>
 
       <div className="flex items-center justify-between mt-1">
         <span className="text-white text-base font-extrabold">
@@ -112,16 +111,7 @@ export default function ProductoCard({ producto, onAgregar }) {
       ) : (
         // Sin producto en el carrito: [info]  Agregar
         <div className="flex items-center gap-2">
-          <Button
-            asChild
-            variant="outline"
-            size="icon"
-            className="rounded-full border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-white shrink-0"
-          >
-            <Link to={`/productos/${producto.id}`}>
-              <Info className="w-4 h-4" />
-            </Link>
-          </Button>
+
 
           <Button
             onClick={agregarItem}

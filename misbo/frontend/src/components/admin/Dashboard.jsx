@@ -4,7 +4,6 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  ComposedChart,
   Line,
   LineChart,
   Pie,
@@ -77,8 +76,6 @@ function Dashboard() {
   if (error) return <p className="text-red-400 text-sm">{error}</p>;
 
   const { resumen, ventasPorMes, ventasPorTipo, masVendidos } = dashboard;
-
-  console.log(dashboard)
 
   const stats = [
     { label: "Ingresos", valor: `$${resumen.ingresos.toLocaleString()}` },
