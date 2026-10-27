@@ -69,9 +69,41 @@ const dashboardService = async () => {
   };
 };
 
+const agregarItemService = async (
+  imagenUrl,
+  mcItem,
+  nombre,
+  descripcion,
+  precio,
+  stock,
+) => {
+  if (!mcItem || !descripcion || !precio || !stock) {
+    throw new Error("Hacen falta datos");
+  }
+
+  try {
+    await botServices.añadirObjeto({ nombre, mcItem, stock });
+
+    await prisma.producto.create({
+      data: {
+        imagenUrl,
+        tipo: "ITEM",
+        nombre,
+        mcItem,
+        descripcion,
+        precio: parseFloat(precio),
+        stock: parseInt(stock),
+      },
+    });
+    console.log(`[+] Producto añadido ${nombre} [${mcItem}]`);
+  } catch (e) {
+    throw new Error("Error: " + e);
+  }
+};
+
 // Inventario actual del bot de Minecraft
 const inventarioBotService = () => {
   return botServices.obtenerInventario();
 };
 
-export default { dashboardService, inventarioBotService };
+export default { dashboardService, agregarItemService, inventarioBotService };
