@@ -287,7 +287,9 @@ function AgregarItem() {
                     disabled={!itemSeleccionado || stock === 0}
                     variant="default"
                     size="icon-xs"
-                    onClick={() => (stock === 0 ? "" : setStock(stock - 1))}
+                    onClick={() =>
+                      setStock((prev) => Math.max(0, Number(prev) - 1))
+                    }
                   >
                     <Minus />
                   </InputGroupButton>
@@ -295,7 +297,7 @@ function AgregarItem() {
                 <InputGroupInput
                   required
                   value={itemSeleccionado ? stock : 0}
-                  onChange={(e) => setStock(e.target.value)}
+                  onChange={(e) => setStock(Number(e.target.value))}
                   disabled={!itemSeleccionado}
                   className="text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   type="number"
@@ -307,7 +309,7 @@ function AgregarItem() {
                   <InputGroupButton
                     disabled={!itemSeleccionado}
                     variant="default"
-                    onClick={() => setStock(stock + 1)}
+                    onClick={() => setStock((prev) => Number(prev) + 1)}
                     size="icon-xs"
                   >
                     <Plus />
