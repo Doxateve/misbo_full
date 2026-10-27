@@ -3,7 +3,7 @@ import prisma from "../config/database.js";
 import botServices from "./bot.services.js";
 
 const dashboardService = async () => {
-  const [compras, totalProductos] = await Promise.all([
+  const [comprasBD, totalProductos] = await Promise.all([
     prisma.compra.findMany({
       select: {
         cantidad: true,
@@ -15,6 +15,9 @@ const dashboardService = async () => {
     }),
     prisma.producto.count(),
   ]);
+
+  // Ignora las compras cuyo producto fue eliminado (producto llega null)
+  const compras = comprasBD.filter((compra) => compra.producto);
 
   const ingresos = compras.reduce((acc, compra) => acc + compra.total, 0);
   // todas las filas de un mismo checkout comparten createdAt
@@ -66,41 +69,9 @@ const dashboardService = async () => {
   };
 };
 
-const agregarItemService = async (
-  imagenUrl,
-  mcItem,
-  nombre,
-  descripcion,
-  precio,
-  stock,
-) => {
-  if (!mcItem || !descripcion || !precio || !stock) {
-    throw new Error("Hacen falta datos");
-  }
-
-  try {
-    await botServices.añadirObjeto({ nombre, mcItem, stock });
-
-    await prisma.producto.create({
-      data: {
-        imagenUrl,
-        tipo: "ITEM",
-        nombre,
-        mcItem,
-        descripcion,
-        precio: parseFloat(precio),
-        stock: parseInt(stock),
-      },
-    });
-    console.log(`[+] Producto añadido ${nombre} [${mcItem}]`);
-  } catch (e) {
-    throw new Error("Error: " + e);
-  }
-};
-
 // Inventario actual del bot de Minecraft
 const inventarioBotService = () => {
   return botServices.obtenerInventario();
 };
 
-export default { dashboardService, agregarItemService, inventarioBotService };
+export default { dashboardService, inventarioBotService };
